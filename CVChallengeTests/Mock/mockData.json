@@ -1,0 +1,9 @@
+{
+  "summary": "My name is Iban Avellaneda. I am an iOS Developer of 5 years and counting, in addition to iOS I also have prior experience in web development. In terms of my iOS experience, I've worked on multiple iOS Swift and Objective-C applications",
+  "topicsOfKnowledge": "Swift, Objective-C, HTML/HTML5, CSS/CSS3, JavaScript, JQuery, PHP, MySQL",
+  "pastExperience": [
+    {"companyName":"Home Advisor", "roleName": "Senior iOS Developer", "dateFromTo":"June 2018-Present", "mainResponsibilities": ["Used CocoaPods library and UIKit Framework, Foundation Framework and CoreGraphics Frameworks.","Used Localytics to analyze the usage of each functionality and market analysis.", "Invoked RESTful web services using AFNetworking and parsed JSON response using JSONSerialization", "Implement SDTBarcode to read QRCode and generate QRCode."]},
+    {"companyName":"Trip Advisor", "roleName": "iOS Mobile App Developer", "dateFromTo":"April 2017-June 2018", "mainResponsibilities": ["Followed Agile Scrum processes and Test-Driven Development (TDD) and code reviews to ensure code quality","Added calendar integration, using EventKit and integrated Touch ID capabilities, using Local Authentication.", "Regularly performed code reviews to ensure efficiency, readability, and maintainability and used Git for version control with Jenkins CI server for Continuous Integration (CI)."]},
+    {"companyName":"REI", "roleName": "iOS Application Developer", "dateFromTo":"February 2016-April 2017", "mainResponsibilities": ["Used UIKit, MapKit and CoreLocation to enhance user to find nearest studio.","Worked with Core Data to prepopulate UITextfields with persisted data received in prior web service calls", "Worked with MapKit, CoreLocation and MKAnnotation to make UI tweaks on the map view and enhance functionality to get the latitude and longitude co-ordinates."]}
+  ]
+}

@@ -1,0 +1,6 @@
+framework module Pods_CVChallengeTests {
+  umbrella header "Pods-CVChallengeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
