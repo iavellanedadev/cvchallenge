@@ -31,35 +31,45 @@ final class FirebaseSource {
     
     //TODO: add function to recieve resume from Firebase
     
-    func getData()
+    func getData(completion: @escaping (Result<Resume, Error>) -> Void)
     {
         childRef.observeSingleEvent(of: .value) { (snapshot) in
             let value = snapshot.value as? NSDictionary
             guard let realValue = value else {return}
             let formattedValue = self.formatData(data: realValue)
-            print("fetched resuime")
+            
+            guard let resume = formattedValue else {
+                let error = ErrorInfo(errorCode: .parsingFailed, errorDescription: "Failed to Parse Data from Firebase", statusCode: 0)
+                completion(.failure(error))
+                return
+            }
+            
+            completion(.success(resume))
         }
     }
     
-    private func formatData(data: NSDictionary)
+    private func formatData(data: NSDictionary) -> Resume?
     {
         for (_,val) in data
         {
             if let data = val as? NSDictionary{
                 guard let summary = data["summary"] as? String,
                 let topicsOfKnowledge = data["topicsOfKnowledge"] as? String,
-                let work = data["pastExperience"] as? NSDictionary else {return}
+                    let work = data["pastExperience"] as? NSArray else {return nil}
                 
                 var pastExperience = [WorkExperience]()
                 
-                for (_,val) in work
-                {
-                    print(val)
+                for i in work{
+                    guard let exp = i as? [String:Any] else {return nil}
+                    let workExp = WorkExperience(companyName: exp["companyName"] as! String, roleName: exp["roleName"] as! String, dateFromTo: exp["dateFromTo"] as! String, mainResponsibilities: exp["mainResponsibilities"] as! [String])
+                    
+                    pastExperience.append(workExp)
                 }
                 
-//                let resume = Resume(summary: summary, pastExperience: pastExperience, topicsOfKnowledge: topicsOfKnowledge)
+                return Resume(summary: summary, pastExperience: pastExperience, topicsOfKnowledge: topicsOfKnowledge)
             }
         
         }
+        return nil
     }
 }

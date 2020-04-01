@@ -39,7 +39,14 @@ extension ViewModel
 //            }
 //        }
         
-        fireb.getData()
+        fireb.getData{ [weak self] result in
+            switch result {
+            case .success(let resp):
+                    self?.resume = resp
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func sendResume()

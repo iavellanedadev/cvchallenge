@@ -29,6 +29,21 @@ class EditViewController: UIViewController {
         
         print("Submitting")
         
+        summarTextView.text = vm.resume?.summary
+        topicsTextView.text = vm.resume?.topicsOfKnowledge
+        
+        companyWorkTextField.text = vm.resume?.pastExperience[0].companyName
+        
+        datesWorkTextField.text = vm.resume?.pastExperience[0].dateFromTo
+        
+        guard let responsibilities = vm.resume?.pastExperience[0].mainResponsibilities else {return}
+        
+        for responsibility in responsibilities
+        {
+
+            responsibilitiesWorkTextView.text = responsibilitiesWorkTextView.text + responsibility + "\n"
+            
+        }
         vm.sendResume()
     }
     
